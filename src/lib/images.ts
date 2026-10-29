@@ -24,5 +24,5 @@ export const photos: Record<string, string> = {
 };
 
 export function photo(name: string): string {
-  return photos[name] ?? photos["hero-construction"];
+  return photos[name] ?? heroConstruction;
 }

@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import type { Database } from "@/integrations/supabase/types";
 
 /**
  * Enquiry submission schema — shared by the contact form and the quote wizard.
@@ -41,7 +42,6 @@ export const submitEnquiry = createServerFn({ method: "POST" })
 
     const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
     const { createClient } = await import("@supabase/supabase-js");
-    type Database = await import("@/integrations/supabase/types").then((m) => m.Database);
     const supabasePublic = createClient<Database>(
       process.env["SUPABASE_URL"]!,
       key,

@@ -139,9 +139,6 @@ export function Footer() {
             <Link to="/terms" className="transition-colors hover:text-gold">
               Terms & Conditions
             </Link>
-            <Link to="/sitemap.xml" className="transition-colors hover:text-gold">
-              Sitemap
-            </Link>
           </div>
         </div>
       </div>

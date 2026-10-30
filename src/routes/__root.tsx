@@ -9,27 +9,46 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Compass, Home, Phone } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { Logo } from "@/components/site/Logo";
+import { Button } from "@/components/ui/button";
+import { site } from "@/config/site";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
+    <div className="flex min-h-[60vh] flex-col items-center justify-center bg-background px-4 py-20 text-center">
+      <Logo className="h-16" />
+      <p className="eyebrow mt-8">Error 404</p>
+      <h1 className="mt-3 text-3xl font-bold text-foreground sm:text-4xl">
+        This page doesn't exist
+      </h1>
+      <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
+        The page you're looking for has been moved or never existed. Let's get you back on solid ground.
+      </p>
+      <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <Button asChild variant="gold">
+          <Link to="/">
+            <Home className="h-4 w-4" aria-hidden />
             Go home
           </Link>
-        </div>
+        </Button>
+        <Button asChild variant="outline">
+          <Link to="/services">
+            <Compass className="h-4 w-4" aria-hidden />
+            Explore services
+          </Link>
+        </Button>
+        <Button asChild variant="outline">
+          <Link to="/contact">
+            <Phone className="h-4 w-4" aria-hidden />
+            Contact us
+          </Link>
+        </Button>
       </div>
     </div>
   );
@@ -78,21 +97,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: site.name },
+      {
+        name: "description",
+        content:
+          "OJHA BUILDTECH delivers waterproofing solutions, civil construction work and infrastructure development with inspection-led planning and quality-checked execution.",
+      },
+      { name: "author", content: site.name },
+      { property: "og:site_name", content: site.name },
+      { property: "og:title", content: site.name },
+      {
+        property: "og:description",
+        content:
+          "Waterproofing, civil construction and infrastructure solutions — built on trust, protected for life.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -120,8 +153,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <div className="flex-1">
+          <Outlet />
+        </div>
+        <Footer />
+      </div>
     </QueryClientProvider>
   );
 }

@@ -11,6 +11,18 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
+import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
+import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as ServicesCivilWorkRouteImport } from './routes/services/civil-work'
+import { Route as ServicesInfrastructureRouteImport } from './routes/services/infrastructure'
+import { Route as ServicesWaterproofingRouteImport } from './routes/services/waterproofing'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +34,182 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRoute = IndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestAQuoteRoute = RequestAQuoteRouteImport.update({
+  id: '/request-a-quote',
+  path: '/request-a-quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/projects/$slug',
+  path: '/projects/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesCivilWorkRoute = ServicesCivilWorkRouteImport.update({
+  id: '/services/civil-work',
+  path: '/services/civil-work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesInfrastructureRoute = ServicesInfrastructureRouteImport.update({
+  id: '/services/infrastructure',
+  path: '/services/infrastructure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesWaterproofingRoute = ServicesWaterproofingRouteImport.update({
+  id: '/services/waterproofing',
+  path: '/services/waterproofing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/industries': typeof IndustriesRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
+  '/terms': typeof TermsRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/services/civil-work': typeof ServicesCivilWorkRoute
+  '/services/infrastructure': typeof ServicesInfrastructureRoute
+  '/services/waterproofing': typeof ServicesWaterproofingRoute
+  '/projects/': typeof ProjectsIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/industries': typeof IndustriesRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
+  '/terms': typeof TermsRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/services/civil-work': typeof ServicesCivilWorkRoute
+  '/services/infrastructure': typeof ServicesInfrastructureRoute
+  '/services/waterproofing': typeof ServicesWaterproofingRoute
+  '/projects': typeof ProjectsIndexRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/industries': typeof IndustriesRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
+  '/terms': typeof TermsRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/services/civil-work': typeof ServicesCivilWorkRoute
+  '/services/infrastructure': typeof ServicesInfrastructureRoute
+  '/services/waterproofing': typeof ServicesWaterproofingRoute
+  '/projects/': typeof ProjectsIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/faq'
+    | '/industries'
+    | '/privacy-policy'
+    | '/request-a-quote'
+    | '/terms'
+    | '/projects/$slug'
+    | '/services/civil-work'
+    | '/services/infrastructure'
+    | '/services/waterproofing'
+    | '/projects/'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/faq'
+    | '/industries'
+    | '/privacy-policy'
+    | '/request-a-quote'
+    | '/terms'
+    | '/projects/$slug'
+    | '/services/civil-work'
+    | '/services/infrastructure'
+    | '/services/waterproofing'
+    | '/projects'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/faq'
+    | '/industries'
+    | '/privacy-policy'
+    | '/request-a-quote'
+    | '/terms'
+    | '/projects/$slug'
+    | '/services/civil-work'
+    | '/services/infrastructure'
+    | '/services/waterproofing'
+    | '/projects/'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  IndustriesRoute: typeof IndustriesRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  RequestAQuoteRoute: typeof RequestAQuoteRoute
+  TermsRoute: typeof TermsRoute
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
+  ServicesCivilWorkRoute: typeof ServicesCivilWorkRoute
+  ServicesInfrastructureRoute: typeof ServicesInfrastructureRoute
+  ServicesWaterproofingRoute: typeof ServicesWaterproofingRoute
+  ProjectsIndexRoute: typeof ProjectsIndexRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +228,108 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries': {
+      id: '/industries'
+      path: '/industries'
+      fullPath: '/industries'
+      preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request-a-quote': {
+      id: '/request-a-quote'
+      path: '/request-a-quote'
+      fullPath: '/request-a-quote'
+      preLoaderRoute: typeof RequestAQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/': {
+      id: '/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/projects/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/civil-work': {
+      id: '/services/civil-work'
+      path: '/services/civil-work'
+      fullPath: '/services/civil-work'
+      preLoaderRoute: typeof ServicesCivilWorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/infrastructure': {
+      id: '/services/infrastructure'
+      path: '/services/infrastructure'
+      fullPath: '/services/infrastructure'
+      preLoaderRoute: typeof ServicesInfrastructureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/waterproofing': {
+      id: '/services/waterproofing'
+      path: '/services/waterproofing'
+      fullPath: '/services/waterproofing'
+      preLoaderRoute: typeof ServicesWaterproofingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  IndustriesRoute: IndustriesRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  RequestAQuoteRoute: RequestAQuoteRoute,
+  TermsRoute: TermsRoute,
+  ProjectsSlugRoute: ProjectsSlugRoute,
+  ServicesCivilWorkRoute: ServicesCivilWorkRoute,
+  ServicesInfrastructureRoute: ServicesInfrastructureRoute,
+  ServicesWaterproofingRoute: ServicesWaterproofingRoute,
+  ProjectsIndexRoute: ProjectsIndexRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

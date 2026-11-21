@@ -2,7 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { site } from "@/config/site";
 import { PageHero } from "@/components/site/PageHero";
 
-const sections: [string, string][] = ;
+const sections: [string, string][] = [
+  ["What we collect", "Your name, phone, optional email, project location, property type and the requirement you describe when you submit an enquiry."],
+  ["How we use it", "Only to respond to your enquiry, arrange inspections and prepare quotations. We do not sell your details."],
+  ["Storage and security", "Enquiries are stored securely and accessed only by authorised staff."],
+  ["Your choices", "You can ask us to update or delete your details at any time by contacting us."],
+];
 
 export const Route = createFileRoute("/privacy-policy")({
   component: Page,

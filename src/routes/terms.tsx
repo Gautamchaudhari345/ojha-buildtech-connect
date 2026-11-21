@@ -2,7 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { site } from "@/config/site";
 import { PageHero } from "@/components/site/PageHero";
 
-const sections: [string, string][] = ;
+const sections: [string, string][] = [
+  ["Website information", "Content on this site is general information. Project scope, pricing and timelines are confirmed only in a written quotation."],
+  ["Quotations", "Quotations are valid for the period stated on them and are based on the site conditions observed at inspection."],
+  ["Workmanship terms", "Workmanship coverage is confirmed in writing with each quotation. No blanket warranty is implied by this website."],
+  ["Changes", "We may update these terms; the current version is always published on this page."],
+];
 
 export const Route = createFileRoute("/terms")({
   component: Page,

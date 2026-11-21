@@ -60,7 +60,7 @@ export function Header() {
       <div className="border-b border-border bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/90">
         <div className="container-site flex h-16 items-center justify-between gap-4">
           <Link to="/" aria-label={`${site.name} home`} className="shrink-0">
-            <Logo className="h-10 lg:h-12" />
+            <Logo className="h-14 w-36 object-cover" />
           </Link>
 
           <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex">

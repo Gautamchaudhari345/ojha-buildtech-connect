@@ -138,7 +138,7 @@ function Index() {
             {commitments.map(({ icon: Icon, title, text }) => (
               <div
                 key={title}
-                className="card-lift rounded-xl border border-border bg-card p-6 shadow-sm"
+                className="motion-reveal card-lift rounded-xl border border-border bg-card p-6 shadow-sm"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-accent">
                   <Icon className="h-5 w-5 text-gold-deep" aria-hidden />
@@ -163,7 +163,7 @@ function Index() {
               <Link
                 key={service.slug}
                 to={service.path}
-                className="card-lift group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm"
+                className="motion-reveal card-lift group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm"
               >
                 <div className="aspect-[16/10] overflow-hidden">
                   <img
@@ -206,7 +206,7 @@ function Index() {
               return (
                 <div
                   key={industry.name}
-                  className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+                  className="motion-reveal rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
                 >
                   <Icon className="h-6 w-6 text-gold" aria-hidden />
                   <h3 className="mt-3 text-base font-semibold text-primary-foreground">

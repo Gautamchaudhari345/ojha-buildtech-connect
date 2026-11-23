@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
 
-import { submitEnquiry, enquirySchema, type EnquiryInput } from "@/lib/enquiries.functions";
 import { coreServices } from "@/data/services";
+import { site } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,6 +15,18 @@ const serviceOptions = [
 ];
 
 const inputClass = "w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
+type EnquiryInput = {
+  source: "contact" | "quote";
+  name: string;
+  phone: string;
+  email: string;
+  service: string;
+  location: string;
+  propertyType: string;
+  message: string;
+  contactMethod: "phone" | "email" | "whatsapp";
+};
 
 export function EnquiryForm({
   source,
@@ -33,11 +45,9 @@ export function EnquiryForm({
     propertyType: "",
     message: "",
     contactMethod: "phone",
-    website: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "done">("idle");
   const [error, setError] = useState<string | null>(null);
-  const [reference, setReference] = useState<string | null>(null);
 
   const set = (key: keyof EnquiryInput) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -47,22 +57,48 @@ export function EnquiryForm({
     e.preventDefault();
     setError(null);
 
-    try {
-      const parsed = enquirySchema.parse(form);
-      setStatus("submitting");
-      const result = await submitEnquiry({ data: parsed });
-      setReference(result.reference ?? null);
-      setStatus("done");
-    } catch (err) {
-      setStatus("idle");
-      if (err && typeof err === "object" && "issues" in err && Array.isArray(err.issues) && err.issues[0]?.message) {
-        setError(String(err.issues[0].message));
-      } else {
-        setError(
-          "Something went wrong while sending your enquiry. Please try again, or reach us directly by phone or email.",
-        );
-      }
+    if (form.name.trim().length < 2) {
+      setError("Please enter your name");
+      return;
     }
+    if (!/^[+]?[\d\s()-]{8,20}$/.test(form.phone.trim())) {
+      setError("Please enter a valid phone number");
+      return;
+    }
+    if (form.service.trim().length < 2) {
+      setError("Please select a service");
+      return;
+    }
+    if (form.message.trim().length < 10) {
+      setError("Please describe your requirement (at least 10 characters)");
+      return;
+    }
+    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+      setError("Please enter a valid email");
+      return;
+    }
+
+    setStatus("submitting");
+    const subject = `${source === "quote" ? "Quote request" : "Website enquiry"} — ${form.service}`;
+    const body = [
+      `Name: ${form.name}`,
+      `Phone: ${form.phone}`,
+      `Email: ${form.email || "-"}`,
+      `Service: ${form.service}`,
+      `Location: ${form.location || "-"}`,
+      `Property type: ${form.propertyType || "-"}`,
+      `Preferred contact method: ${form.contactMethod}`,
+      "",
+      "Requirement:",
+      form.message,
+    ].join("\n");
+
+    if (site.whatsappNumber) {
+      window.location.href = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(`${subject}\n\n${body}`)}`;
+    } else {
+      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+    setStatus("done");
   }
 
   if (status === "done") {
@@ -74,12 +110,6 @@ export function EnquiryForm({
           Thank you — your {source === "quote" ? "quote request" : "message"} has been recorded.
           Our team will get back to you using your preferred contact method.
         </p>
-        {reference && (
-          <p className="mt-4 rounded-md bg-secondary px-4 py-3 text-sm">
-            Your reference code:{" "}
-            <span className="font-semibold text-gold-deep">{reference}</span>
-          </p>
-        )}
         <Button
           variant="outline"
           className="mt-6"
@@ -207,19 +237,6 @@ export function EnquiryForm({
           ))}
         </div>
       </fieldset>
-
-      {/* Honeypot — hidden from users, catches bots. */}
-      <div className="hidden" aria-hidden>
-        <label htmlFor="enquiry-website">Website</label>
-        <input
-          id="enquiry-website"
-          name="website"
-          tabIndex={-1}
-          autoComplete="off"
-          value={form.website}
-          onChange={set("website")}
-        />
-      </div>
 
       {error && (
         <p role="alert" className="mt-4 rounded-md border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">

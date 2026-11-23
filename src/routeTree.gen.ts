@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as MediaRouteImport } from './routes/media'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -47,6 +48,11 @@ const FaqRoute = FaqRouteImport.update({
 const IndustriesRoute = IndustriesRouteImport.update({
   id: '/industries',
   path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaRoute = MediaRouteImport.update({
+  id: '/media',
+  path: '/media',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/industries': typeof IndustriesRoute
+  '/media': typeof MediaRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/terms': typeof TermsRoute
@@ -117,6 +124,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/industries': typeof IndustriesRoute
+  '/media': typeof MediaRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/terms': typeof TermsRoute
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/industries': typeof IndustriesRoute
+  '/media': typeof MediaRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/terms': typeof TermsRoute
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/industries'
+    | '/media'
     | '/privacy-policy'
     | '/request-a-quote'
     | '/terms'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/industries'
+    | '/media'
     | '/privacy-policy'
     | '/request-a-quote'
     | '/terms'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/industries'
+    | '/media'
     | '/privacy-policy'
     | '/request-a-quote'
     | '/terms'
@@ -201,6 +213,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   IndustriesRoute: typeof IndustriesRoute
+  MediaRoute: typeof MediaRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   RequestAQuoteRoute: typeof RequestAQuoteRoute
   TermsRoute: typeof TermsRoute
@@ -247,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: '/industries'
       fullPath: '/industries'
       preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media': {
+      id: '/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof MediaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -321,6 +341,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   IndustriesRoute: IndustriesRoute,
+  MediaRoute: MediaRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   RequestAQuoteRoute: RequestAQuoteRoute,
   TermsRoute: TermsRoute,
@@ -336,11 +357,10 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
+import type { createStart } from '@tanstack/react-start'
 declare module '@tanstack/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
 }

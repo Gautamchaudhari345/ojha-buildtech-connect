@@ -35,9 +35,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50">
       {/* Top contact strip — only shows verified details once configured. */}
-      <div className="hidden bg-navy-deep text-primary-foreground lg:block">
-        <div className="container-site flex h-9 items-center justify-between text-xs">
-          <div className="flex items-center gap-6">
+      <div className="bg-navy-deep text-primary-foreground">
+        <div className="container-site flex min-h-9 flex-wrap items-center justify-between gap-x-4 gap-y-1 py-2 text-[11px] sm:text-xs lg:flex-nowrap lg:py-0">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 sm:gap-6">
             <a
               href={`tel:${site.phoneHref}`}
               className="flex items-center gap-2 transition-colors hover:text-gold"

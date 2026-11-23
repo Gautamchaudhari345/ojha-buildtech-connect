@@ -12,14 +12,10 @@ export const site = {
   tagline: "Built on Trust. Protected for Life.",
   legalName: "OJHA BUILDTECH", // TODO: confirm registered legal entity name
 
-  // TODO: replace with the real phone number before launch.
-  phoneDisplay: "+91 XXXXX XXXXX",
-  phoneHref: "+91XXXXXXXXXX",
-  // TODO: replace with the real email address before launch.
-  email: "hello@example.com",
-
-  // TODO: set the real WhatsApp number (country code, digits only) before launch.
-  whatsappNumber: null as string | null,
+  phoneDisplay: "+91 8340771654",
+  phoneHref: "+918340771654",
+  email: "ojhabuildtech@gmail.com",
+  whatsappNumber: "918340771654",
 
   // TODO: set once the verified registered office address is supplied.
   address: null as string | null,

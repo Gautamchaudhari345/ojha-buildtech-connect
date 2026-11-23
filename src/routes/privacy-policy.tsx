@@ -32,7 +32,17 @@ function Page() {
           {sections.map(([h, t]) => (
             <div key={h}><h2 className="text-xl font-semibold">{h}</h2><p className="mt-2 leading-relaxed text-muted-foreground">{t}</p></div>
           ))}
-          <p className="text-sm text-muted-foreground">Questions? Email {site.email}.</p>
+          <p className="text-sm text-muted-foreground">
+            Questions? Call{" "}
+            <a className="underline underline-offset-4" href={`tel:${site.phoneHref}`}>
+              {site.phoneDisplay}
+            </a>{" "}
+            or email{" "}
+            <a className="underline underline-offset-4" href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
+            .
+          </p>
         </div>
       </section>
     </>

@@ -44,10 +44,9 @@ function ProjectPage() {
       <PageHero eyebrow={p.category} title={p.title} description={p.summary} image={p.image} imageAlt={p.imageAlt} />
       <section className="bg-background py-16">
         <div className="container-site">
-          <p className="rounded-md border border-gold/40 bg-accent/60 px-4 py-3 text-sm">Sample project for illustration — {p.location}.</p>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {blocks.map(([t, d]) => (
-              <div key={t} className="rounded-xl border border-border bg-card p-6 shadow-sm">
+              <div key={t} className="card-lift rounded-2xl border border-border bg-card p-6 shadow-sm">
                 <p className="eyebrow">{t}</p>
                 <p className="mt-3 leading-relaxed">{d}</p>
               </div>
@@ -55,7 +54,7 @@ function ProjectPage() {
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
             {p.gallery.map((g) => (
-              <img key={g.imageAlt} src={photo(g.image)} alt={g.imageAlt} loading="lazy" className="aspect-[4/3] w-full rounded-xl object-cover" />
+              <img key={g.imageAlt} src={photo(g.image)} alt={g.imageAlt} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-md ring-1 ring-border" />
             ))}
           </div>
           <Button asChild variant="outline" className="mt-10"><Link to="/projects"><ArrowLeft className="h-4 w-4" aria-hidden />All projects</Link></Button>

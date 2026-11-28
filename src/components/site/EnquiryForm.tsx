@@ -103,7 +103,7 @@ export function EnquiryForm({
 
   if (status === "done") {
     return (
-      <div className="rounded-xl border border-border bg-card p-8 text-center shadow-sm">
+      <div className="rounded-2xl border border-border border-t-4 border-t-gold bg-card p-8 text-center shadow-md">
         <CheckCircle2 className="mx-auto h-12 w-12 text-gold-deep" aria-hidden />
         <h3 className="mt-4 text-xl font-semibold text-foreground">Enquiry received</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -125,7 +125,7 @@ export function EnquiryForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-xl border border-border bg-card p-6 shadow-sm sm:p-8" noValidate>
+    <form onSubmit={handleSubmit} className="rounded-2xl border border-border border-t-4 border-t-gold bg-card p-6 shadow-md sm:p-8" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-1.5">
           <Label htmlFor="enquiry-name">Full name *</Label>

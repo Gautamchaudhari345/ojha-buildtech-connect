@@ -120,9 +120,14 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  ::selection {
+    background-color: oklch(0.737 0.101 82.7 / 0.35);
+    color: oklch(0.18 0.042 262);
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 }
 
@@ -132,38 +137,72 @@
   }
 
   .gold-line {
-    @apply h-1 w-14 rounded-full bg-gold;
+    height: 3px;
+    width: 3.25rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-deep) 100%);
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-gold-deep;
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-gold-deep;
   }
 
   .navy-section {
     @apply bg-navy text-primary-foreground;
   }
 
+  .navy-mesh {
+    background-color: var(--navy-deep);
+    background-image:
+      radial-gradient(ellipse 70% 80% at 100% 0%, oklch(0.737 0.101 82.7 / 0.22), transparent 55%),
+      radial-gradient(ellipse 50% 60% at 0% 100%, oklch(0.32 0.06 258 / 0.55), transparent 50%);
+  }
+
   .card-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   }
   .card-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px -16px oklch(0.233 0.05 261.7 / 0.25);
+    transform: translateY(-6px);
+    border-color: oklch(0.737 0.101 82.7 / 0.55);
+    box-shadow: 0 22px 48px -18px oklch(0.233 0.05 261.7 / 0.38);
   }
 
   .hero-overlay {
-    background: linear-gradient(
-      100deg,
-      oklch(0.18 0.042 262 / 0.92) 0%,
-      oklch(0.233 0.05 261.7 / 0.78) 45%,
-      oklch(0.233 0.05 261.7 / 0.35) 100%
-    );
+    background:
+      linear-gradient(180deg, oklch(0.12 0.04 262 / 0.45) 0%, transparent 22%, transparent 70%, oklch(0.12 0.04 262 / 0.55) 100%),
+      linear-gradient(
+        105deg,
+        oklch(0.13 0.04 262 / 0.94) 0%,
+        oklch(0.18 0.045 262 / 0.82) 46%,
+        oklch(0.2 0.04 262 / 0.38) 100%
+      );
+  }
+
+  .icon-well {
+    @apply flex h-12 w-12 items-center justify-center rounded-xl bg-navy text-gold shadow-sm;
+    transition: transform 0.35s ease;
+  }
+  .card-lift:hover .icon-well {
+    transform: translateY(-2px) scale(1.04);
+  }
+
+  .hero-zoom {
+    transform-origin: 62% 42%;
+    animation: heroZoom 22s ease-out forwards;
+  }
+
+  .gold-line {
+    transform-origin: center;
   }
 
   .fade-up {
     opacity: 0;
-    transform: translateY(18px);
-    animation: fadeUp 0.7s ease forwards;
+    transform: translateY(16px);
+    animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .cta-glow {
+    animation: goldGlow 3.4s ease-in-out infinite;
   }
 
   .motion-reveal {
@@ -172,10 +211,22 @@
   }
 
   @supports (animation-timeline: view()) {
-    .motion-reveal {
-      animation: revealIn 0.7s ease both;
+    .motion-reveal,
+    .reveal {
+      animation: revealIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
       animation-timeline: view();
-      animation-range: entry 0% entry 35%;
+      animation-range: entry 0% entry 32%;
+    }
+    .reveal-1 { animation-range: entry 5% entry 36%; }
+    .reveal-2 { animation-range: entry 10% entry 40%; }
+    .reveal-3 { animation-range: entry 15% entry 46%; }
+    .reveal-4 { animation-range: entry 20% entry 50%; }
+    .reveal-5 { animation-range: entry 24% entry 54%; }
+
+    .gold-line {
+      animation: lineGrow 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 28%;
     }
   }
 
@@ -189,12 +240,27 @@
   @keyframes revealIn {
     from {
       opacity: 0;
-      transform: translateY(18px);
+      translate: 0 20px;
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      translate: 0 0;
     }
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+  }
+
+  @keyframes lineGrow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes goldGlow {
+    0%, 100% { box-shadow: 0 8px 22px -10px oklch(0.635 0.096 80.4 / 0.55); }
+    50% { box-shadow: 0 12px 28px -8px oklch(0.737 0.101 82.7 / 0.85); }
   }
 }
 
@@ -209,8 +275,16 @@
   }
 
   .fade-up,
-  .motion-reveal {
+  .motion-reveal,
+  .reveal,
+  .hero-zoom,
+  .gold-line,
+  .cta-glow,
+  .card-lift:hover,
+  .card-lift:hover .icon-well {
     opacity: 1;
     transform: none;
+    translate: none;
+    animation: none;
   }
 }

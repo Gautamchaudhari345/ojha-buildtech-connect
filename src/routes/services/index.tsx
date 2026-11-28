@@ -25,12 +25,12 @@ export const Route = createFileRoute("/services/")({
 function ServicesPage() {
   return (
     <>
-      <PageHero eyebrow="Services" title="Waterproofing, civil work and infrastructure" description="Three connected capabilities, delivered with the same discipline: inspect, plan, execute, verify." image="hero-construction" />
+      <PageHero eyebrow="Services" title="Waterproofing, civil work and infrastructure" description="Three kinds of work that usually meet on the same building. We look first, write the scope, and check each stage before the next one starts." image="turnkey-construction" imageAlt="Workers building a multi-storey concrete frame with scaffolding and a mixer on site" />
       <section className="bg-background py-16 lg:py-20">
         <div className="container-site space-y-16">
           {coreServices.map((s, i) => (
             <div key={s.slug} className="grid items-center gap-10 lg:grid-cols-2">
-              <img src={photo(s.image)} alt={s.imageAlt} loading="lazy" className={`aspect-[4/3] w-full rounded-xl object-cover shadow-sm ${i % 2 ? "lg:order-2" : ""}`} />
+              <img src={photo(s.image)} alt={s.imageAlt} loading="lazy" className={`aspect-[4/3] w-full rounded-2xl object-cover shadow-lg ring-1 ring-border ${i % 2 ? "lg:order-2" : ""}`} />
               <div>
                 <p className="eyebrow">{s.tagline}</p>
                 <h2 className="mt-3 text-2xl font-bold sm:text-3xl">{s.title}</h2>

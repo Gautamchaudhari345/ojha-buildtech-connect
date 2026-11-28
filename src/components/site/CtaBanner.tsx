@@ -4,18 +4,20 @@ import { Button } from "@/components/ui/button";
 import { site } from "@/config/site";
 
 export function CtaBanner({
-  title = "Discuss your project with us",
-  text = "Share your requirement — we will arrange a site inspection where needed and follow with a clear written proposal.",
+  title = "Describe the problem. We will say what happens next.",
+  text = "A short note is enough to start. If the price depends on seeing the site, we will tell you that before anyone quotes a number.",
 }: {
   title?: string;
   text?: string;
 }) {
   return (
-    <section className="navy-section">
-      <div className="container-site flex flex-col items-start gap-6 py-14 lg:flex-row lg:items-center lg:justify-between">
+    <section className="relative overflow-hidden navy-mesh text-primary-foreground">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" aria-hidden />
+      <div className="container-site relative flex flex-col items-start gap-8 py-16 lg:flex-row lg:items-center lg:justify-between lg:py-20">
         <div className="max-w-2xl">
-          <h2 className="text-2xl font-bold leading-tight sm:text-3xl">{title}</h2>
-          <p className="mt-3 text-base leading-relaxed text-primary-foreground/80">{text}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">Next step</p>
+          <h2 className="mt-3 text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl">{title}</h2>
+          <p className="mt-4 text-base leading-relaxed text-primary-foreground/80">{text}</p>
         </div>
         <div className="flex flex-wrap gap-3">
           <Button asChild variant="gold" size="lg">

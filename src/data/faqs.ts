@@ -35,25 +35,25 @@ export const faqs: Faq[] = [
     question: "What waterproofing services do you provide?",
     category: "Waterproofing",
     answer:
-      "We handle terrace and roof waterproofing, bathroom and wet-area treatment, basement waterproofing, water-tank waterproofing, external wall leakage treatment, and crack sealing or leakage repair — for both residential and commercial properties. The right system is recommended after inspecting your site.",
+      "Terraces and roofs, bathrooms and other wet areas, basements, water tanks, external walls, and cracks that are already leaking — on homes and on commercial buildings. Which system we use depends on what the inspection finds, not on a standard package.",
   },
   {
     question: "Will waterproofing stop leaks permanently?",
     category: "Waterproofing",
     answer:
-      "No responsible contractor can promise a permanent result, because performance depends on the structure, surfaces and conditions specific to your building. What we commit to is correct diagnosis, an appropriate system, proper application and quality checks at each stage — and clear guidance on care after completion.",
+      "No. A leak can return if the structure moves, a drain blocks, or later work damages the treatment. What we commit to is the diagnosis, the system chosen for that surface, careful application, and checks along the way — plus written care notes when we hand the site back. Any workmanship period is stated in the quotation, not as a slogan on this website.",
   },
   {
     question: "Do you take renovation and repair work, or only new construction?",
     category: "Civil Work",
     answer:
-      "Both. Our civil work covers new construction and structural work as well as renovation, repair, plastering, masonry, concrete and finishing. Small repair scopes are welcome — we will tell you honestly if a job falls outside what we do well.",
+      "Both. New structure, renovation, plaster, masonry, concrete and finishing. A small repair is welcome. If a job needs a specialist we do not have, we will say so instead of stretching the scope to win it.",
   },
   {
     question: "Is a site inspection needed before I get a quotation?",
     category: "Site Inspection",
     answer:
-      "Yes, in most cases. Water-related problems especially are hard to price correctly without seeing the actual surfaces and access conditions. A site inspection lets us diagnose the cause, not just the symptom, and quote for the work that is actually needed.",
+      "For almost every water problem, yes. The mark on the ceiling is rarely the place the water enters, and access changes the cost. A visit lets us price the repair that is actually required, not a guess that protects us and surprises you.",
   },
   {
     question: "Do you charge for a site inspection?",
@@ -71,7 +71,7 @@ export const faqs: Faq[] = [
     question: "Do you offer fixed prices over the phone?",
     category: "Quotations",
     answer:
-      "We do not quote blind. A price given without seeing the site usually protects the contractor, not you. We can share a broad indication over a call, but the binding figure comes only in a written quotation after inspection.",
+      "No. A number given before anyone has seen the site usually protects the contractor. On a call we can say what kind of work it sounds like. The figure you can rely on is the written quotation after a visit.",
   },
   {
     question: "How long does a typical project take?",
@@ -113,6 +113,6 @@ export const faqs: Faq[] = [
     question: "How do I get started?",
     category: "Site Inspection",
     answer:
-      "Send us your requirement through the contact form or request-a-quote page, or call us directly. We will discuss the problem, arrange a site inspection where needed, and follow with a clear written proposal.",
+      "Call, write, or send the form with what you are seeing and where the building is. We will tell you if a visit is the next step, then follow with a written proposal. You do not need drawings to start.",
   },
 ];

@@ -27,17 +27,17 @@ function FaqPage() {
   const list = cat === "All" ? faqs : faqs.filter((f) => f.category === cat);
   return (
     <>
-      <PageHero eyebrow="FAQ" title="Straight answers" description="Honest answers — no blanket promises." />
+      <PageHero eyebrow="FAQ" title="Ask this before you hire anyone" description="The questions we hear before a visit. If we cannot promise it, the answer says so — and the quotation will match." />
       <section className="bg-background py-16">
         <div className="container-site max-w-4xl">
           <div className="flex flex-wrap gap-2">
             {faqCategories.map((c) => (
-              <button key={c} onClick={() => setCat(c)} aria-pressed={cat === c} className={cn("rounded-full border px-4 py-2 text-sm", cat === c ? "border-navy bg-navy text-primary-foreground" : "border-input hover:bg-secondary")}>{c}</button>
+              <button key={c} onClick={() => setCat(c)} aria-pressed={cat === c} className={cn("rounded-full border px-4 py-2 text-sm font-medium transition-colors", cat === c ? "border-navy bg-navy text-gold" : "border-border bg-card text-foreground hover:border-gold/60")}>{c}</button>
             ))}
           </div>
           <Accordion type="single" collapsible className="mt-8 space-y-3">
             {list.map((f) => (
-              <AccordionItem key={f.question} value={f.question} className="rounded-lg border border-border bg-card px-5">
+              <AccordionItem key={f.question} value={f.question} className="rounded-2xl border border-border bg-card px-5 shadow-sm">
                 <AccordionTrigger className="text-left font-semibold">{f.question}</AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">{f.answer}</AccordionContent>
               </AccordionItem>

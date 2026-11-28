@@ -1,11 +1,9 @@
 import { cn } from "@/lib/utils";
-import logoColor from "@/assets/obt-logo-concept-b.png";
-import logoWhite from "@/assets/obt-logo-white.png";
-import { site } from "@/config/site";
+import logoMark from "@/assets/ojha-logo.png";
 
 /**
- * OBT logo variants. `color` = full-color lockup (light surfaces),
- * `white` = white/gold variant (navy surfaces).
+ * Shield plus the name OJHA BUILDTECH. The area outside the badge is
+ * transparent, so the same mark works on white and navy surfaces.
  */
 export function Logo({
   variant = "color",
@@ -14,13 +12,35 @@ export function Logo({
   variant?: "color" | "white";
   className?: string;
 }) {
+  const onDark = variant === "white";
+
   return (
-    <img
-      src={variant === "white" ? logoWhite : logoColor}
-      alt={`${site.name} logo`}
-      width={1024}
-      height={1024}
-      className={cn("h-12 w-auto object-contain", className)}
-    />
+    <span className={cn("inline-flex items-center gap-2.5", className)}>
+      <img
+        src={logoMark}
+        alt=""
+        width={751}
+        height={853}
+        className="h-full w-auto object-contain"
+      />
+      <span className="flex flex-col justify-center leading-none">
+        <span
+          className={cn(
+            "font-display text-[0.34em] font-extrabold tracking-[0.08em]",
+            onDark ? "text-white" : "text-navy",
+          )}
+        >
+          OJHA
+        </span>
+        <span
+          className={cn(
+            "mt-[0.28em] font-display text-[0.17em] font-bold tracking-[0.22em]",
+            onDark ? "text-gold" : "text-gold-deep",
+          )}
+        >
+          BUILDTECH
+        </span>
+      </span>
+    </span>
   );
 }

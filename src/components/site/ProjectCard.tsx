@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
 
 import { photo } from "@/lib/images";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/data/projects";
 
@@ -18,7 +17,7 @@ export function ProjectCard({
       to="/projects/$slug"
       params={{ slug: project.slug }}
       className={cn(
-        "card-lift group block overflow-hidden rounded-xl border border-border bg-card shadow-sm",
+        "card-lift group block overflow-hidden rounded-2xl border border-border bg-card shadow-sm",
         className,
       )}
     >
@@ -29,7 +28,7 @@ export function ProjectCard({
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <span className="absolute left-3 top-3 rounded-full bg-navy-deep/90 px-3 py-1 text-xs font-medium text-primary-foreground">
+        <span className="absolute left-3 top-3 rounded-full bg-navy-deep/90 px-3 py-1 text-xs font-semibold tracking-wide text-gold ring-1 ring-gold/40">
           {project.category}
         </span>
       </div>
@@ -42,9 +41,6 @@ export function ProjectCard({
           {project.location}
         </p>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.summary}</p>
-        <Badge variant="outline" className="mt-4 border-gold/40 text-gold-deep">
-          Sample project — replace with real work
-        </Badge>
       </div>
     </Link>
   );

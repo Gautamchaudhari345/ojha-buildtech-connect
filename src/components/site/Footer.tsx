@@ -23,16 +23,17 @@ export function Footer() {
   ].filter((s): s is { href: string; label: string; Icon: typeof Linkedin } => Boolean(s.href));
 
   return (
-    <footer className="bg-navy-deep text-primary-foreground">
-      <div className="container-site grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative bg-navy-deep text-primary-foreground">
+      <div className="h-1 bg-gradient-to-r from-transparent via-gold to-transparent" aria-hidden />
+      <div className="container-site grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Logo variant="white" className="h-14" />
+          <Logo variant="white" className="h-20 text-[5rem]" />
           <p className="mt-4 text-sm leading-relaxed text-primary-foreground/80">
             {site.tagline}
           </p>
-          <p className="mt-4 text-sm text-primary-foreground/70">
-            Waterproofing, civil construction and infrastructure solutions delivered with
-            inspection-led planning and quality-checked execution.
+          <p className="mt-4 text-sm leading-relaxed text-primary-foreground/70">
+            Waterproofing, civil work and site development for homes, offices and industrial
+            buildings. We look first, quote in writing, and check the work before we leave.
           </p>
         </div>
 

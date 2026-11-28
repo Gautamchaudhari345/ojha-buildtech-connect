@@ -27,12 +27,12 @@ function ProjectsPage() {
   const list = cat === "All" ? projects : projects.filter((p) => p.category === cat);
   return (
     <>
-      <PageHero eyebrow="Projects" title="Our approach, project by project" description="Illustrative sample projects showing how we plan and execute. Real project records will replace these." />
+      <PageHero eyebrow="Projects" title="Work from the site" description="Building, renovation, structural concrete, waterproofing and repair — shown from the work itself." />
       <section className="bg-background py-16">
         <div className="container-site">
           <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter projects">
             {projectCategories.map((c) => (
-              <button key={c} role="tab" aria-selected={cat === c} onClick={() => setCat(c)} className={cn("rounded-full border px-4 py-2 text-sm transition-colors", cat === c ? "border-navy bg-navy text-primary-foreground" : "border-input hover:bg-secondary")}>{c}</button>
+              <button key={c} role="tab" aria-selected={cat === c} onClick={() => setCat(c)} className={cn("rounded-full border px-4 py-2 text-sm font-medium transition-colors", cat === c ? "border-navy bg-navy text-gold" : "border-border bg-card text-foreground hover:border-gold/60")}>{c}</button>
             ))}
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

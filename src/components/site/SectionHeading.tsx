@@ -26,17 +26,16 @@ export function SectionHeading({
       {eyebrow && (
         <p className={cn("eyebrow", onDark && "text-gold")}>{eyebrow}</p>
       )}
-      <div className={cn(eyebrow && "mt-3")}>
-        <div className="gold-line" aria-hidden />
-      </div>
       <h2
         className={cn(
-          "mt-4 text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl",
+          "text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl",
+          eyebrow && "mt-3",
           onDark && "text-primary-foreground",
         )}
       >
         {title}
       </h2>
+      <div className={cn("gold-line mt-4", align === "center" && "mx-auto")} aria-hidden />
       {description && (
         <p
           className={cn(

@@ -17,6 +17,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         description={detail.heroDescription}
         image={detail.image}
         imageAlt={detail.imageAlt}
+        imageClassName={detail.imageClassName}
       />
 
       <section className="bg-background py-16 lg:py-20">
@@ -29,8 +30,17 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
             {detail.solutions.map((solution) => (
               <article
                 key={solution.title}
-                className="card-lift rounded-xl border border-border bg-card p-6 shadow-sm"
+                className="card-lift overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
               >
+                {solution.image && (
+                  <img
+                    src={photo(solution.image)}
+                    alt={solution.imageAlt ?? ""}
+                    loading="lazy"
+                    className="aspect-[16/10] w-full object-cover"
+                  />
+                )}
+                <div className="p-6">
                 <h3 className="text-lg font-semibold text-foreground">{solution.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {solution.applications}
@@ -43,6 +53,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
                     </li>
                   ))}
                 </ul>
+                </div>
               </article>
             ))}
           </div>
@@ -70,7 +81,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
               ))}
             </ol>
           </div>
-          <div className="self-start overflow-hidden rounded-xl border border-border shadow-sm">
+          <div className="self-start overflow-hidden rounded-2xl border border-border shadow-lg ring-1 ring-border">
             <img
               src={photo(detail.image)}
               alt={detail.imageAlt}
@@ -83,7 +94,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
 
       <section className="bg-background py-16">
         <div className="container-site">
-          <div className="rounded-xl border-l-4 border-gold bg-accent/60 p-6 sm:p-8">
+          <div className="rounded-2xl border border-gold/30 border-l-4 border-l-gold bg-accent/70 p-6 shadow-sm sm:p-8">
             <p className="eyebrow">Scope note</p>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground sm:text-base">
               {detail.scopeNote}

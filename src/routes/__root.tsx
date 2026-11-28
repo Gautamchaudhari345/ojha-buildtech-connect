@@ -21,7 +21,7 @@ import { site } from "@/config/site";
 function NotFoundComponent() {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center bg-background px-4 py-20 text-center">
-      <Logo className="h-16" />
+      <Logo className="h-16 text-[4rem]" />
       <p className="eyebrow mt-8">Error 404</p>
       <h1 className="mt-3 text-3xl font-bold text-foreground sm:text-4xl">
         This page doesn't exist
@@ -97,7 +97,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "OJHA BUILDTECH delivers waterproofing solutions, civil construction work and infrastructure development with inspection-led planning and quality-checked execution.",
+          "OJHA BUILDTECH does waterproofing, civil construction and site development. We inspect first, quote in writing, and check the work before we leave.",
       },
       { name: "author", content: site.name },
       { property: "og:site_name", content: site.name },
@@ -105,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Waterproofing, civil construction and infrastructure solutions — built on trust, protected for life.",
+          "Waterproofing, civil work and site development. Inspect first, quote in writing, check before handover.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

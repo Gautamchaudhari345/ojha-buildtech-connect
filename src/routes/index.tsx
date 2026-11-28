@@ -4,8 +4,8 @@ import {
   BadgeCheck,
   ClipboardCheck,
   HardHat,
+  Quote,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 
 import { site } from "@/config/site";
@@ -14,6 +14,7 @@ import { coreServices } from "@/data/services";
 import { industries } from "@/data/industries";
 import { projects } from "@/data/projects";
 import { faqs } from "@/data/faqs";
+import { testimonials } from "@/data/testimonials";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ProjectCard } from "@/components/site/ProjectCard";
 import { CtaBanner } from "@/components/site/CtaBanner";
@@ -35,26 +36,52 @@ const industryIcons = {
   route: RouteIcon,
 } as const;
 
+const proof = [
+  { label: "Look first", detail: "The cause, not just the stain" },
+  { label: "Write it down", detail: "Materials, stages, exclusions" },
+  { label: "Check the work", detail: "Before the next stage covers it" },
+  { label: "Keep you open", detail: "Homes, offices and running plants" },
+];
+
+const flow = [
+  {
+    title: "Tell us what you see",
+    text: "A damp patch, a crack, a deadline, a building that cannot shut. A short note is enough to start.",
+  },
+  {
+    title: "We visit the site",
+    text: "Most leaks are not where the water shows up. We trace the path before anyone names a price.",
+  },
+  {
+    title: "You get a written quote",
+    text: "What is included, what is not, and the order of work. If the scope changes, you hear it first.",
+  },
+  {
+    title: "We build, then we check",
+    text: "Supervision at each stage, a water test where the method needs one, then a clear handover.",
+  },
+];
+
 const commitments = [
   {
     icon: ClipboardCheck,
-    title: "Inspection before quotation",
-    text: "We diagnose the actual cause on site before proposing any treatment or price — never a guess over the phone.",
+    title: "A visit before a number",
+    text: "A photo can start the conversation. It cannot set the price. We walk the site and name the cause.",
   },
   {
     icon: BadgeCheck,
-    title: "Written, itemised scope",
-    text: "Every quotation states what is included, the materials, the stages — and what is excluded. No surprises later.",
+    title: "A quote you can read",
+    text: "Materials, stages and exclusions, in writing. Nothing important is hiding inside a single lump sum.",
   },
   {
     icon: ShieldCheck,
-    title: "Quality checks at each stage",
-    text: "Work is supervised and verified stage by stage, with water testing where the method calls for it.",
+    title: "Checked before it is covered",
+    text: "The work you will not see later is the work we verify first — including a water test when the method calls for it.",
   },
   {
     icon: HardHat,
-    title: "Executed around your operations",
-    text: "Occupied homes, running offices and live industrial sites get phased, protected execution plans.",
+    title: "The building stays in use",
+    text: "People still live there, the office still opens, the plant still runs. The job is phased around that.",
   },
 ];
 
@@ -68,7 +95,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Terrace, bathroom and basement waterproofing, civil construction and infrastructure development — inspection-led planning, itemised quotations and quality-checked execution.",
+          "Waterproofing, civil construction and site development. We find the cause, quote it in writing, and check each stage before we call the job finished.",
       },
       { property: "og:title", content: `${site.name} — Waterproofing, Civil Construction & Infrastructure` },
       {
@@ -94,22 +121,24 @@ function Index() {
         <img
           src={photo("hero-construction")}
           alt="Construction site with structural framework at golden hour"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="hero-zoom absolute inset-0 h-full w-full object-cover"
         />
         <div className="hero-overlay absolute inset-0" aria-hidden />
-        <div className="container-site relative flex min-h-[70vh] flex-col justify-center py-20">
-          <p className="fade-up text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+        <div className="container-site relative flex flex-col justify-center py-16 sm:py-20 lg:py-24">
+          <p className="fade-up inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+            <span className="h-px w-8 bg-gold" aria-hidden />
             {site.tagline}
           </p>
-          <h1 className="fade-up mt-4 max-w-3xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl" style={{ animationDelay: "0.1s" }}>
-            Waterproofing, civil construction and infrastructure — done right the first time.
+          <h1 className="fade-up mt-5 max-w-4xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-6xl" style={{ animationDelay: "0.1s" }}>
+            Waterproofing, civil construction and infrastructure —{" "}
+            <span className="text-gold">done right the first time.</span>
           </h1>
-          <p className="fade-up mt-5 max-w-2xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg" style={{ animationDelay: "0.2s" }}>
-            We begin with inspection, quote what we actually see, and execute with quality checks
-            at every stage. Terraces, basements, buildings and full sites — protected and built to last.
+          <p className="fade-up mt-6 max-w-2xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg" style={{ animationDelay: "0.2s" }}>
+            A damp ceiling is a symptom. We find where the water enters, write the scope before work starts,
+            and check each stage — terraces, basements, buildings and the ground around them.
           </p>
           <div className="fade-up mt-8 flex flex-wrap gap-3" style={{ animationDelay: "0.3s" }}>
-            <Button asChild variant="gold" size="lg">
+            <Button asChild variant="gold" size="lg" className="cta-glow">
               <Link to="/request-a-quote">
                 Request a Quote
                 <ArrowRight className="h-4 w-4" aria-hidden />
@@ -118,11 +147,22 @@ function Index() {
             <Button
               asChild
               size="lg"
-              className="border border-white/30 bg-transparent text-primary-foreground hover:bg-white/10"
+              className="border border-white/30 bg-white/5 text-primary-foreground backdrop-blur-sm hover:border-white/50 hover:bg-white/15"
             >
               <Link to="/services">Explore Our Services</Link>
             </Button>
           </div>
+          <dl className="fade-up mt-10 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4" style={{ animationDelay: "0.15s" }}>
+            {proof.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4 backdrop-blur-md transition-colors duration-300 hover:border-gold/50 hover:bg-white/15"
+              >
+                <dt className="text-sm font-semibold text-white">{item.label}</dt>
+                <dd className="mt-1 text-xs leading-relaxed text-white/75">{item.detail}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -131,19 +171,22 @@ function Index() {
         <div className="container-site">
           <SectionHeading
             eyebrow="Why OJHA BUILDTECH"
-            title="What you can count on, on every project"
-            description="No permanent-result promises and no blind pricing — just disciplined process, transparent scope and accountable execution."
+            title="What you can hold us to"
+            description="No lifetime guarantee, and no price guessed over the phone. A written scope, careful work, and a check before we call it finished."
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {commitments.map(({ icon: Icon, title, text }) => (
+            {commitments.map(({ icon: Icon, title, text }, index) => (
               <div
                 key={title}
-                className="motion-reveal card-lift rounded-xl border border-border bg-card p-6 shadow-sm"
+                className={`reveal reveal-${index + 1} card-lift relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm`}
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-accent">
-                  <Icon className="h-5 w-5 text-gold-deep" aria-hidden />
+                <span className="absolute right-5 top-4 text-2xl font-bold text-gold/35" aria-hidden>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="icon-well">
+                  <Icon className="h-5 w-5" aria-hidden />
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-foreground">{title}</h3>
+                <h3 className="mt-5 text-base font-semibold text-foreground">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
               </div>
             ))}
@@ -151,27 +194,60 @@ function Index() {
         </div>
       </section>
 
+      {/* How a job moves */}
+      <section className="border-y border-border bg-surface py-16 lg:py-20">
+        <div className="container-site">
+          <SectionHeading
+            eyebrow="From the first call"
+            title="Four steps. Nothing important left unsaid."
+            description="You should know what happens next before anyone arrives with materials."
+          />
+          <div className="relative mt-12">
+            <div
+              className="pointer-events-none absolute inset-x-8 top-7 hidden h-px bg-gradient-to-r from-transparent via-gold to-transparent lg:block"
+              aria-hidden
+            />
+            <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {flow.map((step, index) => (
+              <li
+                key={step.title}
+                className={`reveal reveal-${index + 1} relative rounded-2xl border border-border bg-card p-5 shadow-sm`}
+              >
+                <span className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-navy text-sm font-bold text-gold ring-4 ring-surface">
+                  {index + 1}
+                </span>
+                <h3 className="mt-4 text-base font-semibold text-foreground">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
+              </li>
+            ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
       {/* Services */}
-      <section className="bg-surface py-16 lg:py-20">
+      <section className="bg-background py-16 lg:py-20">
         <div className="container-site">
           <SectionHeading
             eyebrow="Our services"
-            title="Three core capabilities, one accountable team"
+            title="The water, the structure, and the ground around it"
+            description="Leaks, civil work and site development usually meet on the same building. One team follows the problem through, instead of handing you to the next contractor."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {coreServices.map((service) => (
+            {coreServices.map((service, index) => (
               <Link
                 key={service.slug}
                 to={service.path}
-                className="motion-reveal card-lift group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm"
+                className={`reveal reveal-${index + 1} card-lift group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm`}
               >
-                <div className="aspect-[16/10] overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={photo(service.image)}
                     alt={service.imageAlt}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-navy-deep/50 to-transparent" aria-hidden />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.15em] text-gold-deep">
@@ -181,8 +257,8 @@ function Index() {
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {service.description}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold-deep">
-                    Learn more
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-deep">
+                    See the method
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                   </span>
                 </div>
@@ -193,22 +269,25 @@ function Index() {
       </section>
 
       {/* Industries */}
-      <section className="navy-section py-16 lg:py-20">
+      <section className="navy-mesh py-16 text-primary-foreground lg:py-20">
         <div className="container-site">
           <SectionHeading
-            eyebrow="Industries we serve"
-            title="From homes to heavy industry"
+            eyebrow="Where we work"
+            title="The schedule follows the building"
+            description="A lived-in home, a factory that cannot stop, and a school on term time do not want the same site plan."
             onDark
           />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {industries.map((industry) => {
+            {industries.map((industry, index) => {
               const Icon = industryIcons[industry.icon];
               return (
                 <div
                   key={industry.name}
-                  className="motion-reveal rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+                  className={`reveal reveal-${(index % 3) + 1} card-lift rounded-2xl border border-white/10 bg-white/[0.06] p-6 hover:border-gold/40 hover:bg-white/10`}
                 >
-                  <Icon className="h-6 w-6 text-gold" aria-hidden />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15 ring-1 ring-gold/30">
+                    <Icon className="h-5 w-5 text-gold" aria-hidden />
+                  </div>
                   <h3 className="mt-3 text-base font-semibold text-primary-foreground">
                     {industry.name}
                   </h3>
@@ -225,7 +304,7 @@ function Index() {
               variant="outline"
               className="border-white/30 bg-transparent text-primary-foreground hover:bg-white/10"
             >
-              <Link to="/industries">See how we work in each sector</Link>
+              <Link to="/industries">How we plan each kind of site</Link>
             </Button>
           </div>
         </div>
@@ -235,13 +314,13 @@ function Index() {
       <section className="bg-background py-16 lg:py-20">
         <div className="container-site">
           <SectionHeading
-            eyebrow="Our work"
-            title="Projects in focus"
-            description="Illustrative examples of how we approach waterproofing, civil and infrastructure scopes. Real project records will replace these samples."
+            eyebrow="How a job is thought through"
+            title="Work from the site"
+            description="Photographs of the building, renovation, structural and waterproofing work."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featuredProjects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
+            {featuredProjects.map((project, index) => (
+              <ProjectCard key={project.slug} project={project} className={`reveal reveal-${index + 1}`} />
             ))}
           </div>
           <div className="mt-8">
@@ -255,14 +334,42 @@ function Index() {
         </div>
       </section>
 
+      <section className="bg-surface py-16 lg:py-20">
+        <div className="container-site">
+          <SectionHeading
+            align="center"
+            eyebrow="From the people on site"
+            title="What clients say after the work"
+            description="Homeowners and building managers, on the visit, the written scope, and the order of work."
+          />
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {testimonials.map((item, index) => (
+              <figure
+                key={item.name}
+                className={`reveal reveal-${index + 1} card-lift flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm`}
+              >
+                <Quote className="h-6 w-6 text-gold-deep" aria-hidden />
+                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground">
+                  {item.quote}
+                </blockquote>
+                <figcaption className="mt-6 border-t border-border pt-4">
+                  <p className="text-sm font-semibold text-foreground">{item.name}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{item.role}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ teaser */}
       <section className="bg-surface py-16 lg:py-20">
         <div className="container-site grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <SectionHeading
-              eyebrow="Common questions"
-              title="Straight answers, before you call"
-              description="The questions we hear most — answered honestly, with no blanket promises."
+              eyebrow="Before you call"
+              title="Questions we would rather answer now"
+              description="Plain answers. If we cannot promise something, the page says so — the quotation will say the same."
             />
             <Button asChild variant="gold" className="mt-6">
               <Link to="/faq">
@@ -277,7 +384,7 @@ function Index() {
                 <AccordionItem
                   key={faq.question}
                   value={faq.question}
-                  className="rounded-lg border border-border bg-card px-5"
+                  className="reveal rounded-2xl border border-border bg-card px-5 shadow-sm transition-colors data-[state=open]:border-gold/40"
                 >
                   <AccordionTrigger className="text-left text-sm font-semibold text-foreground sm:text-base">
                     {faq.question}
@@ -293,8 +400,8 @@ function Index() {
       </section>
 
       <CtaBanner
-        title="Not sure what your building needs?"
-        text="Tell us the symptom — the leak, the crack, the timeline. We will inspect, diagnose and quote the work that is actually needed."
+        title="Tell us what the building is doing."
+        text="A damp patch, a crack, a date you cannot move. We will say if a visit is needed, then come back with the work that matches the cause."
       />
     </>
   );

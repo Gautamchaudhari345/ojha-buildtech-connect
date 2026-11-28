@@ -1,8 +1,6 @@
 /**
- * Sample portfolio entries. Every item below is an ILLUSTRATIVE PLACEHOLDER —
- * it must be replaced (or removed) with real OJHA BUILDTECH projects before
- * launch. The UI labels these entries as samples so they are never presented
- * as completed real work.
+ * Project entries use the site photographs. Copy describes the work in the
+ * photo — no invented city, client, or finished-result claim.
  */
 
 export type ProjectCategory = "Waterproofing" | "Civil Work" | "Infrastructure";
@@ -26,144 +24,101 @@ export const projectCategories: ("All" | ProjectCategory)[] = [
   "All",
   "Waterproofing",
   "Civil Work",
-  "Infrastructure",
 ];
 
 export const projects: Project[] = [
   {
-    slug: "high-rise-terrace-waterproofing",
-    title: "High-Rise Terrace Waterproofing",
-    category: "Waterproofing",
-    location: "Sample location — replace with real project",
-    image: "project-glass-facade",
-    imageAlt: "Modern glass high-rise building facade",
-    summary:
-      "Full terrace membrane renewal for a multi-storey residential tower suffering monsoon leakage into top-floor apartments.",
-    scope:
-      "Surface preparation, crack treatment and membrane application across the full terrace area, with parapet and detail treatment.",
-    challenge:
-      "Multiple older waterproofing layers had failed at different points, so leaks appeared in unpredictable locations rather than a single area.",
-    approach:
-      "Systematic leak mapping, removal of loose material, targeted crack repairs, and a new membrane system completed zone by zone with water testing between stages.",
-    outcome:
-      "Terrace secured ahead of the monsoon with staged testing records for each completed zone.",
-    gallery: [
-      { image: "project-glass-facade", imageAlt: "High-rise building exterior" },
-      { image: "service-waterproofing", imageAlt: "Facade treatment work" },
-    ],
-  },
-  {
-    slug: "residential-complex-civil-package",
-    title: "Residential Complex Civil Package",
+    slug: "small-building-construction",
+    title: "Small Building Construction",
     category: "Civil Work",
-    location: "Sample location — replace with real project",
-    image: "project-residential",
-    imageAlt: "Contemporary residential building exterior",
+    location: "Site work",
+    image: "small-building-construction",
+    imageAlt: "Masons raising a small red-brick building on bamboo scaffolding",
     summary:
-      "Civil package for a residential complex covering structure finishing, masonry, plaster and internal works.",
-    scope:
-      "Masonry, plastering, flooring preparation and finishing works across multiple blocks, executed against a stage-wise schedule.",
-    challenge:
-      "Handover dates required overlapping trades across three blocks with a shared material supply.",
-    approach:
-      "Zone-wise mobilisation with dedicated supervision per block, daily progress tracking and joint quality checks at each stage boundary.",
-    outcome:
-      "All blocks handed over on schedule with snag lists closed before final handover.",
+      "A small brick building going up course by course, with bamboo scaffolding and the mortar mixed beside the wall.",
+    scope: "Brick masonry, scaffolding, and on-site mixing while the walls are raised.",
+    challenge: "A compact plot, so materials, the mix, and the masons all work in a tight space around the walls.",
+    approach: "Walls are raised in stages. The next course goes on only after the one below has been laid and checked.",
+    outcome: "The brick shell is standing, with the scaffolding still in place for the work that follows.",
     gallery: [
-      { image: "project-residential", imageAlt: "Residential complex building" },
-      { image: "service-civil", imageAlt: "Construction site supervision" },
+      { image: "small-building-construction", imageAlt: "Masons raising a small red-brick building on bamboo scaffolding" },
+      { image: "turnkey-construction", imageAlt: "Workers building a multi-storey concrete frame with scaffolding and a mixer on site" },
     ],
   },
   {
-    slug: "warehouse-site-development",
-    title: "Warehouse Site Development",
-    category: "Infrastructure",
-    location: "Sample location — replace with real project",
-    image: "project-industrial",
-    imageAlt: "Industrial facility under development",
-    summary:
-      "Site development package for a warehouse including leveling, heavy-duty paving, drainage and boundary works.",
-    scope:
-      "Earthwork leveling, heavy-duty flooring for loading areas, stormwater drainage and external works.",
-    challenge:
-      "Water accumulation on the plot during the monsoon threatened both construction access and the finished levels.",
-    approach:
-      "Regraded levels with a stormwater network routed before paving, and phased paving so operations could begin in completed zones.",
-    outcome:
-      "Site handed over with dry, operational external areas ready for warehousing operations.",
-    gallery: [
-      { image: "project-industrial", imageAlt: "Industrial development works" },
-      { image: "service-infrastructure", imageAlt: "Structural framework" },
-    ],
-  },
-  {
-    slug: "commercial-facade-repair",
-    title: "Commercial Building Facade Repair",
-    category: "Waterproofing",
-    location: "Sample location — replace with real project",
-    image: "project-architecture",
-    imageAlt: "Curved modern architectural facade",
-    summary:
-      "External wall leakage treatment for a commercial building with damp streaks and peeling finishes on inner walls.",
-    scope:
-      "Crack mapping, external crack sealing, window-perimeter treatment and re-finished affected areas.",
-    challenge:
-      "The building remained occupied, so noisy and dusty work had to be restricted to agreed windows.",
-    approach:
-      "Floor-by-floor access planning with the building management, quiet-hours scheduling and daily protection of occupied areas.",
-    outcome:
-      "Internal dampness resolved floor by floor, with occupied areas protected throughout.",
-    gallery: [
-      { image: "project-architecture", imageAlt: "Architectural facade detail" },
-      { image: "service-waterproofing", imageAlt: "Waterproofing preparation" },
-    ],
-  },
-  {
-    slug: "office-renovation",
-    title: "Office Floor Renovation",
+    slug: "turnkey-construction",
+    title: "Turnkey Construction",
     category: "Civil Work",
-    location: "Sample location — replace with real project",
-    image: "project-commercial",
-    imageAlt: "Modern office interior space",
+    location: "Site work",
+    image: "turnkey-construction",
+    imageAlt: "Workers building a multi-storey concrete frame with scaffolding and a mixer on site",
     summary:
-      "Turnkey renovation of an office floor including partitioning, flooring, painting and wet-area renewal.",
-    scope:
-      "Demolition of outdated finishes, bathroom waterproofing and retiling, flooring, painting and electrical coordination.",
-    challenge:
-      "The client operated from adjacent floors, so noise, dust and debris movement had strict limits.",
-    approach:
-      "Containment and debris-routing plan agreed upfront, with noisy work scheduled before business hours.",
-    outcome:
-      "Renovated floor handed over with zero disruption reported by neighbouring tenants.",
+      "A multi-storey frame under construction — columns, slabs and brick infill, with the crew and a mixer working floor by floor.",
+    scope: "Frame, infill masonry, and the site setup that keeps materials moving while upper floors are built.",
+    challenge: "Several trades on one building at once: concrete above, brickwork below, and access through the scaffolding.",
+    approach: "The frame leads. Infill and the next lift follow the same sequence, so one floor is ready before the crew moves up.",
+    outcome: "The structure is rising as one job — frame, walls and site plant in the same photograph.",
     gallery: [
-      { image: "project-commercial", imageAlt: "Renovated office space" },
-      { image: "site-engineer", imageAlt: "Engineer reviewing site work" },
+      { image: "turnkey-construction", imageAlt: "Workers building a multi-storey concrete frame with scaffolding and a mixer on site" },
+      { image: "rcc-structural-work", imageAlt: "Crew placing concrete on a reinforced roof slab with steel bars and a pump line" },
     ],
   },
   {
-    slug: "basement-seepage-treatment",
-    title: "Basement Seepage Treatment",
-    category: "Waterproofing",
-    location: "Sample location — replace with real project",
-    image: "site-engineer",
-    imageAlt: "Site engineer inspecting basement construction",
+    slug: "rcc-structural-work",
+    title: "RCC & Structural Work",
+    category: "Civil Work",
+    location: "Site work",
+    image: "rcc-structural-work",
+    imageAlt: "Crew placing concrete on a reinforced roof slab with steel bars and a pump line",
     summary:
-      "Basement wall and raft joint seepage treatment for a commercial property's parking level.",
-    scope:
-      "Joint identification, injection grouting, crystalline coating and drainage-point correction.",
-    challenge:
-      "Persistent seepage returned after two earlier cosmetic repairs, pointing to untreated joints beneath the surface.",
-    approach:
-      "Full joint mapping before any treatment, injection at the actual entry points, and protective coating across vulnerable areas.",
-    outcome:
-      "Seepage stopped at treated joints and the parking level stayed dry through subsequent rains.",
+      "A roof slab being cast over a steel grid, with the crew placing and levelling the concrete as it arrives.",
+    scope: "Reinforcement, shuttering, and the pour — from the pump line to the finished surface of the slab.",
+    challenge: "A slab has to be placed while the concrete is still workable, across the whole bay, not in patches.",
+    approach: "Steel is fixed and checked first. The pour then moves in one pass, with people on the slab to place and level it.",
+    outcome: "The reinforced slab is being cast in a single operation, steel and concrete visible together.",
     gallery: [
-      { image: "site-engineer", imageAlt: "Basement inspection" },
-      { image: "service-waterproofing", imageAlt: "Surface preparation" },
+      { image: "rcc-structural-work", imageAlt: "Crew placing concrete on a reinforced roof slab with steel bars and a pump line" },
+      { image: "turnkey-construction", imageAlt: "Workers building a multi-storey concrete frame with scaffolding and a mixer on site" },
+    ],
+  },
+  {
+    slug: "building-renovation",
+    title: "Building Renovation",
+    category: "Civil Work",
+    location: "Site work",
+    image: "building-renovation",
+    imageAlt: "Two workers finishing interior walls and a ceiling during a building renovation",
+    summary:
+      "Interior finishing in progress — two workers on the walls and ceiling, making the room ready for the next coat.",
+    scope: "Wall and ceiling preparation inside an existing room, before paint or other finishes.",
+    challenge: "Work happens inside a finished building, so dust, edges and the surfaces already there have to be respected.",
+    approach: "Surfaces are made good in place. The crew works the walls and ceiling together so the room is even before the finish.",
+    outcome: "The room is in the finishing stage, with the old surfaces being brought back to a clean base.",
+    gallery: [
+      { image: "building-renovation", imageAlt: "Two workers finishing interior walls and a ceiling during a building renovation" },
+      { image: "small-building-construction", imageAlt: "Masons raising a small red-brick building on bamboo scaffolding" },
+    ],
+  },
+  {
+    slug: "waterproofing-repair-pipeline",
+    title: "Waterproofing, Repair & Pipeline",
+    category: "Waterproofing",
+    location: "Site work",
+    image: "waterproofing-repair-pipeline",
+    imageAlt: "Waterproofing a terrace, repairing a cracked wall, and jointing a pipeline",
+    summary:
+      "Three jobs in one frame: a terrace being waterproofed, a cracked wall opened for repair, and a pipeline being jointed.",
+    scope: "Terrace waterproofing, civil repair of a damaged wall, and pipeline jointing.",
+    challenge: "Water, cracks and a leaking line are different faults. Each one needs its own opening-up before it is closed.",
+    approach: "The terrace is coated where water sits. The wall is cut back to sound material. The pipe is jointed and checked before it is covered.",
+    outcome: "The photograph shows the work at the stage it is actually done — coating, repair and jointing — not a promised result.",
+    gallery: [
+      { image: "waterproofing-repair-pipeline", imageAlt: "Waterproofing a terrace, repairing a cracked wall, and jointing a pipeline" },
+      { image: "building-renovation", imageAlt: "Two workers finishing interior walls and a ceiling during a building renovation" },
     ],
   },
 ];
 
-export function projectBySlug(slug: string): Project | undefined {
+export function projectBySlug(slug: string) {
   return projects.find((p) => p.slug === slug);
 }

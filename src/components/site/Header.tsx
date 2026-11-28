@@ -35,7 +35,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50">
       {/* Top contact strip — only shows verified details once configured. */}
-      <div className="bg-navy-deep text-primary-foreground">
+      <div className="border-b border-gold/25 bg-navy-deep text-primary-foreground">
         <div className="container-site flex min-h-9 flex-wrap items-center justify-between gap-x-4 gap-y-1 py-2 text-[11px] sm:text-xs lg:flex-nowrap lg:py-0">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 sm:gap-6">
             <a
@@ -58,26 +58,30 @@ export function Header() {
       </div>
 
       {/* Main navigation */}
-      <div className="border-b border-border bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/90">
-        <div className="container-site flex h-16 items-center justify-between gap-4">
+      <div className="border-b border-border bg-background/90 shadow-sm backdrop-blur-md supports-[backdrop-filter]:bg-background/80">
+        <div className="container-site flex h-[4.25rem] items-center justify-between gap-4">
           <Link to="/" aria-label={`${site.name} home`} className="shrink-0">
-            <Logo className="h-14 w-36 object-cover" />
+            <Logo className="h-14 text-[3.5rem]" />
           </Link>
 
-          <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive(pathname, link.to)
-                    ? "text-gold-deep"
-                    : "text-foreground hover:text-gold-deep"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav aria-label="Main navigation" className="hidden items-center gap-0.5 lg:flex">
+            {navLinks.map((link) => {
+              const active = isActive(pathname, link.to);
+              return (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  aria-current={active ? "page" : undefined}
+                  className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                    active
+                      ? "bg-gold-soft text-navy"
+                      : "text-foreground/80 hover:bg-secondary hover:text-navy"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -94,7 +98,7 @@ export function Header() {
               <SheetContent side="right" className="w-72">
                 <SheetHeader>
                   <SheetTitle className="text-left">
-                    <Logo className="h-9" />
+                    <Logo className="h-14 text-[3.5rem]" />
                   </SheetTitle>
                 </SheetHeader>
                 <nav aria-label="Mobile navigation" className="mt-2 flex flex-col gap-1 px-2">
@@ -103,10 +107,10 @@ export function Header() {
                       key={link.to}
                       to={link.to}
                       onClick={() => setOpen(false)}
-                      className={`rounded-md px-3 py-2.5 text-base font-medium transition-colors ${
+                      className={`rounded-lg px-3 py-3 text-base font-medium transition-colors ${
                         isActive(pathname, link.to)
-                          ? "bg-secondary text-gold-deep"
-                          : "hover:bg-secondary"
+                          ? "bg-gold-soft text-navy"
+                          : "text-foreground hover:bg-secondary"
                       }`}
                     >
                       {link.label}

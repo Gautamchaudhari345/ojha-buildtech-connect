@@ -25,14 +25,14 @@ export const Route = createFileRoute("/industries")({
 function IndustriesPage() {
   return (
     <>
-      <PageHero eyebrow="Industries" title="Planned around how your building is used" description="Every sector has different constraints — occupants, operations, schedules. We plan execution around them." image="project-industrial" />
+      <PageHero eyebrow="Industries" title="The work follows how the building is used" description="People still living there, a line that cannot stop, a school on term time. The hours, the access and the protection change with the building." image="project-industrial" />
       <section className="bg-background py-16">
         <div className="container-site grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {industries.map((ind) => {
             const Icon = icons[ind.icon];
             return (
-              <article key={ind.name} className="card-lift rounded-xl border border-border bg-card p-6 shadow-sm">
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-navy"><Icon className="h-5 w-5 text-gold" aria-hidden /></div>
+              <article key={ind.name} className="card-lift rounded-2xl border border-border bg-card p-6 shadow-sm">
+                <div className="icon-well"><Icon className="h-5 w-5" aria-hidden /></div>
                 <h2 className="mt-4 text-lg font-semibold">{ind.name}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{ind.description}</p>
                 <div className="mt-4 flex flex-wrap gap-2">

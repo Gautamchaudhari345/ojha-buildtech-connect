@@ -9,6 +9,8 @@ export type SolutionBlock = {
   title: string;
   applications: string;
   problemsAddressed: string[];
+  image?: string;
+  imageAlt?: string;
 };
 
 export type ServiceDetail = {
@@ -17,6 +19,8 @@ export type ServiceDetail = {
   heroDescription: string;
   image: string;
   imageAlt: string;
+  /** Classes for the hero crop, when the photo is a collage. */
+  imageClassName?: string;
   solutions: SolutionBlock[];
   process: string[];
   scopeNote: string;
@@ -26,12 +30,15 @@ export const waterproofing: ServiceDetail = {
   slug: "waterproofing",
   heroTitle: "Waterproofing Solutions",
   heroDescription:
-    "Water ingress rarely has a single cause. We begin every assignment with inspection and diagnosis, then match the treatment — membrane, coating, grouting or crystalline systems — to the surface, the structure and the exposure it faces.",
-  image: "service-waterproofing",
-  imageAlt: "Building exterior with scaffolding during waterproofing work",
+    "Water rarely enters where you first see it. We inspect the path, then choose the treatment — membrane, coating, grout or crystalline — for that surface, that structure and that exposure.",
+  image: "waterproofing-repair-pipeline",
+  imageAlt: "Waterproofing a terrace, repairing a cracked wall, and jointing a pipeline",
+  imageClassName: "object-top",
   solutions: [
     {
       title: "Terrace and Roof Waterproofing",
+      image: "waterproofing-repair-pipeline",
+      imageAlt: "Waterproofing a terrace, repairing a cracked wall, and jointing a pipeline",
       applications:
         "Flat and sloped RCC terraces, podiums, chajjas and roof decks of residential and commercial buildings.",
       problemsAddressed: [
@@ -87,6 +94,8 @@ export const waterproofing: ServiceDetail = {
     },
     {
       title: "Crack Sealing and Leakage Repair",
+      image: "waterproofing-repair-pipeline",
+      imageAlt: "Waterproofing a terrace, repairing a cracked wall, and jointing a pipeline",
       applications:
         "Structural and non-structural cracks in slabs, beams, columns and masonry.",
       problemsAddressed: [
@@ -117,19 +126,21 @@ export const waterproofing: ServiceDetail = {
     "Handover with care and maintenance guidance",
   ],
   scopeNote:
-    "Waterproofing performance depends on the structure, surfaces and site conditions. We recommend what inspection supports — no system is presented as a permanent guarantee.",
+    "How long a treatment lasts depends on the structure, the surface and what happens to the building afterwards. We recommend only what the inspection supports. Nothing here is a permanent guarantee.",
 };
 
 export const civilWork: ServiceDetail = {
   slug: "civil-work",
   heroTitle: "Civil Construction Work",
   heroDescription:
-    "From new construction to repairs and finishing, our civil work is planned around drawings, materials and supervision — with clear scope, staged execution and quality checks you can see.",
-  image: "service-civil",
-  imageAlt: "Construction workers on a reinforced concrete building site",
+    "New work, repairs and finishing, set out in stages you can follow. Drawings and materials are named in the quote, and each stage is checked before the next one covers it.",
+  image: "small-building-construction",
+  imageAlt: "Masons raising a small red-brick building on bamboo scaffolding",
   solutions: [
     {
-      title: "Residential and Commercial Civil Work",
+      title: "Turnkey Construction",
+      image: "turnkey-construction",
+      imageAlt: "Workers building a multi-storey concrete frame with scaffolding and a mixer on site",
       applications:
         "Independent houses, apartment works, offices, showrooms and small commercial buildings.",
       problemsAddressed: [
@@ -140,7 +151,9 @@ export const civilWork: ServiceDetail = {
       ],
     },
     {
-      title: "Building Construction and Structural Work",
+      title: "RCC & Structural Work",
+      image: "rcc-structural-work",
+      imageAlt: "Crew placing concrete on a reinforced roof slab with steel bars and a pump line",
       applications:
         "RCC frame construction, structural repairs and strengthening works under engineering guidance.",
       problemsAddressed: [
@@ -151,7 +164,9 @@ export const civilWork: ServiceDetail = {
       ],
     },
     {
-      title: "Renovation and Repair",
+      title: "Building Renovation",
+      image: "building-renovation",
+      imageAlt: "Two workers finishing interior walls and a ceiling during a building renovation",
       applications:
         "Refurbishment of homes, offices and commercial units, occupied or vacant.",
       problemsAddressed: [
@@ -163,6 +178,8 @@ export const civilWork: ServiceDetail = {
     },
     {
       title: "Plastering and Masonry",
+      image: "small-building-construction",
+      imageAlt: "Masons raising a small red-brick building on bamboo scaffolding",
       applications:
         "Internal and external plaster, brick and block masonry, boundary walls and compound structures.",
       problemsAddressed: [
@@ -174,6 +191,8 @@ export const civilWork: ServiceDetail = {
     },
     {
       title: "Concrete Work and Finishing",
+      image: "rcc-structural-work",
+      imageAlt: "Crew placing concrete on a reinforced roof slab with steel bars and a pump line",
       applications:
         "Casting, flooring, waterproof concreting, tiling, painting and final finishing packages.",
       problemsAddressed: [
@@ -211,9 +230,9 @@ export const infrastructure: ServiceDetail = {
   slug: "infrastructure",
   heroTitle: "Infrastructure Development",
   heroDescription:
-    "Infrastructure work is where coordination matters most — multiple agencies, sequences and site conditions. We plan execution around the programme and keep each stage verifiable.",
-  image: "service-infrastructure",
-  imageAlt: "Large structural framework under development",
+    "Levels, access, drainage and concrete, in an order the rest of the site can live with. Each stage is written down so you can see what is done and what is still ahead.",
+  image: "rcc-structural-work",
+  imageAlt: "Crew placing concrete on a reinforced roof slab with steel bars and a pump line",
   solutions: [
     {
       title: "Site Development",
@@ -228,6 +247,8 @@ export const infrastructure: ServiceDetail = {
     },
     {
       title: "Commercial and Industrial Infrastructure",
+      image: "turnkey-construction",
+      imageAlt: "Workers building a multi-storey concrete frame with scaffolding and a mixer on site",
       applications:
         "Factories, warehouses, logistics units, commercial complexes and institutional campuses.",
       problemsAddressed: [
@@ -239,6 +260,8 @@ export const infrastructure: ServiceDetail = {
     },
     {
       title: "Concrete and Foundational Works",
+      image: "rcc-structural-work",
+      imageAlt: "Crew placing concrete on a reinforced roof slab with steel bars and a pump line",
       applications:
         "Foundations, machine bases, retaining structures and heavy-duty concrete elements.",
       problemsAddressed: [
